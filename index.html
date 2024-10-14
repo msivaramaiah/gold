@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Jewellery Final Price</title>
+</head>
+
+
+<style>
+  input[type=number], select {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=button]:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  </style>
+
+<body style="margin: 30px">
+  <div>
+    <h3>Gold Jewellery Final Price</h3>
+    <form>
+      1 gram Gold Rate : <input type="number" id="firstNumber" onload="onLoadEvent()" oninput="multiplyBy()" value=6500 "/><span id="firstNumberValue" style="color:Red"></span><br>
+      Jewellery weight in grams: <input type="number" id="secondNumber" onload="onLoadEvent()" oninput="multiplyBy()" value=1 /><span id="secondNumberValue" style="color:Red"></span><br>
+      <p style="color:white">
+        <span id="TotalGold" style="color:Red">___________________________________________</span>
+      </p>
+      Making Charges in : <input type="number" id="thirdNumber" onload="onLoadEvent()" oninput="multiplyBy()" value=2 "/><span id="thirdNumberValue" style="color:Red"></span>  %<br>
+      <p style="color:white">
+        <span id="CostOfGold+MakingCharges" style="color:Red">___________________________________________</span>
+      </p>
+      GST : <input type="number" id="fourthNumber" onload="onLoadEvent()" oninput="multiplyBy()" value=3 /><span id="fourthNumberValue" style="color:Red" ></span>  %<br>
+      <input type="button" onClick="multiplyBy()" Value="Go" style="margin: 2px;"/><br>
+    </form>
+
+
+    <p style="color:white">
+      <span id="CostOfGold+MakingCharges+GST" style="color:Red">___________________________________________</span>
+    </p>
+
+    <script>
+      function onLoadEvent() {
+        document.getElementById("firstNumberValue").innerHTML = aaa;
+        document.getElementById("secondNumberValue").innerHTML = bbb;
+        document.getElementById("thirdNumberValue").innerHTML = ccc;
+        document.getElementById("fourthNumberValue").innerHTML = ddd;
+      }
+
+
+      function multiplyBy() {
+        let aaa = parseFloat(document.getElementById(
+          "firstNumber").value);
+        let bbb = parseFloat(document.getElementById("secondNumber").value);
+        let ccc = parseFloat(document.getElementById("thirdNumber").value);
+        let ddd = parseFloat(document.getElementById("fourthNumber").value);
+        let eee = aaa * bbb;
+        let fff = 1 + ccc / 100;
+        let ggg = eee * fff;
+        let hhh = 1 + ddd / 100;
+        let result = Math.round(ggg * hhh);
+
+        document.getElementById("firstNumberValue").innerHTML = aaa;
+        document.getElementById("secondNumberValue").innerHTML = bbb;
+        document.getElementById("thirdNumberValue").innerHTML = ccc;
+        document.getElementById("fourthNumberValue").innerHTML = ddd;
+        document.getElementById("TotalGold").innerHTML = "The Cost of Gold is: " + eee;
+        document.getElementById("CostOfGold+MakingCharges").innerHTML = "Cost of Gold + Making Charges: (" + eee + "+" + Math.round(eee * ccc / 100) + ") :" + Math.round(ggg);
+        document.getElementById("CostOfGold+MakingCharges+GST").innerHTML = "Cost of Gold + Making Charges + GST: (" + eee + "+" + Math.round(eee * ccc / 100) + "+" + Math.round(ggg * ddd / 100) + ") :" + result;
+      }
+
+    </script>
+  </div>
+</body>
+
+
+</html>
