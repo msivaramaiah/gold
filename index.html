@@ -1,3 +1,162 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Digit Digital Locker with Scroll Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            flex-direction: column;
+        }
+        .locker-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .locker-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .locker-input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .scroll-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .scroll-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 5px;
+            width: 40px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .scroll-button:focus {
+            outline: none;
+        }
+        .scroll-button:active {
+            background-color: #0056b3;
+        }
+        .display-number {
+            margin-top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="locker-container">
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit1" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit1', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit1', -1)">↓</button>
+        </div>
+    </div>
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit2" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit2', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit2', -1)">↓</button>
+        </div>
+    </div>
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit3" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit3', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit3', -1)">↓</button>
+        </div>
+    </div>
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit4" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit4', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit4', -1)">↓</button>
+        </div>
+    </div>
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit5" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit5', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit5', -1)">↓</button>
+        </div>
+    </div>
+    <div class="locker-input-container">
+        <input type="text" maxlength="1" class="locker-input" id="digit6" oninput="updateNumber()" pattern="\d*">
+        <div class="scroll-buttons">
+            <button class="scroll-button" onclick="scrollDigit('digit6', 1)">↑</button>
+            <button class="scroll-button" onclick="scrollDigit('digit6', -1)">↓</button>
+        </div>
+    </div>
+</div>
+
+<div class="display-number" id="displayNumber">000000</div>
+
+<script>
+    function moveFocus(currentInput, nextId) {
+        if (currentInput.value.length == 1) {
+            document.getElementById(nextId).focus();
+        }
+    }
+
+    function scrollDigit(id, direction) {
+        const input = document.getElementById(id);
+        let value = parseInt(input.value) || 0;  // Convert input value to number, or 0 if empty.
+        value += direction; // Increase or decrease based on direction
+
+        if (value > 9) value = 0;  // Wrap around to 0 if it goes above 9
+        if (value < 0) value = 9;  // Wrap around to 9 if it goes below 0
+
+        input.value = value; // Set the new value
+        updateNumber(); // Update the displayed number
+    }
+
+    function updateNumber() {
+        let number = '';
+        for (let i = 1; i <= 6; i++) {
+            number += document.getElementById('digit' + i).value || '0'; // Default to '0' if input is empty
+        }
+        document.getElementById('displayNumber').textContent = number;
+    }
+
+    // Allow only numeric input and move focus
+    const inputs = document.querySelectorAll('.locker-input');
+    inputs.forEach(input => {
+        input.addEventListener('input', function () {
+            if (!/^\d$/.test(input.value)) {
+                input.value = '';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
